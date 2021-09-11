@@ -21,6 +21,14 @@ jobs:
       - name: Fetch latest version
         id: fetch_version
         run: echo ::set-output name=TAG::${GITHUB_REF#refs/tags/}
+        
+      - name: Check if Git tag exists
+        run: echo "::set-env name=HEAD_TAG::$(git tag --points-at HEAD)"
+
+      - name: Runs only if Git tag exists
+        run: echo"This runs because Git tag points at HEAD ..."
+        if: env.HEAD_TAG != ''   
+        
       - name: Docker Login
         uses: docker/login-action@v1
         with:
