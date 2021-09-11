@@ -6,7 +6,7 @@ name: Build and push the tagged build to production
 on:
   push:
     tags:
-      - 'v*'
+      - "v*"
   workflow_dispatch:
 jobs:
   build_push_image:
