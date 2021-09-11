@@ -20,6 +20,7 @@ jobs:
 
       - name: Set output
         id: vars
+        run: echo $GITHUB_REF
         run: echo ::set-output name=tag::${GITHUB_REF:10}
       - name: Check output
         env:
